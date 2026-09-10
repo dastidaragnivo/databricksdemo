@@ -11,4 +11,4 @@ resources:
       channel: CURRENT
       libraries:
         - notebook:
-            path: ../src/Gold_NB.py
+            path: ../src/Gold_NB.ipynb
