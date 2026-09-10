@@ -11,4 +11,4 @@ resources:
       channel: CURRENT
       libraries:
         - notebook:
-            path: ../src/Silver_NB.py
+            path: ../src/Silver_NB.ipynb

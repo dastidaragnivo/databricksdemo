@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: Bronze_Ingestion
           notebook_task:
-            notebook_path: ../src/Bronze_NB.py
+            notebook_path: ../src/Bronze_NB.ipynb
             source: WORKSPACE
           job_cluster_key: Wiki_cluster
 
