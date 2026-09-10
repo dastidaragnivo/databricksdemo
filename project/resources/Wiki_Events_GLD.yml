@@ -1,0 +1,13 @@
+id: b93e3328-48d1-4525-b61d-783a560fb165
+pipeline_type: WORKSPACE
+name: Wiki_Events_GLD
+libraries:
+  - notebook:
+      path: ../src/Gold_NB.py
+schema: gold
+continuous: false
+development: false
+photon: true
+channel: CURRENT
+catalog: streaming_demo
+serverless: true
