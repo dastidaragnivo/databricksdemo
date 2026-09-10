@@ -16,6 +16,7 @@ jobs:
         uses: databricks/setup-cli@main
 
       - name: Validate Bundle
+        working-directory: ./project
         env:
           DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -23,6 +24,7 @@ jobs:
           databricks bundle validate -t dev
 
       - name: Deploy Bundle to Dev Workspace
+        working-directory: ./project
         env:
           DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
