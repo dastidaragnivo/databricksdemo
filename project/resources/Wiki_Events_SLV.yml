@@ -1,13 +1,14 @@
-id: b6c61d91-1a8b-4664-963f-a8c5157d95cb
-pipeline_type: WORKSPACE
-name: Wiki_Events_SLV
-libraries:
-  - notebook:
-      path: ../src/Silver_NB.py
-schema: silver
-continuous: false
-development: false
-photon: true
-channel: CURRENT
-catalog: streaming_demo
-serverless: true
+resources:
+  pipelines:
+    Wiki_Events_SLV:
+      name: "[${bundle.target}] Wiki_Events_SLV"
+      schema: silver
+      catalog: streaming_demo
+      continuous: false
+      development: false
+      photon: true
+      serverless: true
+      channel: CURRENT
+      libraries:
+        - notebook:
+            path: ../src/Silver_NB.py

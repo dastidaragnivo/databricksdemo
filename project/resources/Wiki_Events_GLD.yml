@@ -1,13 +1,14 @@
-id: b93e3328-48d1-4525-b61d-783a560fb165
-pipeline_type: WORKSPACE
-name: Wiki_Events_GLD
-libraries:
-  - notebook:
-      path: ../src/Gold_NB.py
-schema: gold
-continuous: false
-development: false
-photon: true
-channel: CURRENT
-catalog: streaming_demo
-serverless: true
+resources:
+  pipelines:
+    Wiki_Events_GLD:
+      name: "[${bundle.target}] Wiki_Events_GLD"
+      schema: gold
+      catalog: streaming_demo
+      continuous: false
+      development: false
+      photon: true
+      serverless: true
+      channel: CURRENT
+      libraries:
+        - notebook:
+            path: ../src/Gold_NB.py

@@ -1,35 +1,35 @@
 resources:
   jobs:
     Wiki_Event_Processing_Job:
-      name: Wiki_Event_Processing_Job
+      name: "[${bundle.target}] Wiki_Event_Processing_Job"
       tasks:
         - task_key: Bronze_Ingestion
           notebook_task:
             notebook_path: ../src/Bronze_NB.py
             source: WORKSPACE
           job_cluster_key: Wiki_cluster
+
         - task_key: Silver_Processing_with_DQ
           depends_on:
             - task_key: Bronze_Ingestion
           pipeline_task:
-            pipeline_id: b6c61d91-1a8b-4664-963f-a8c5157d95cb
+            pipeline_id: ${resources.pipelines.Wiki_Events_SLV.id}
+
         - task_key: Gold_Aggregation
           depends_on:
             - task_key: Silver_Processing_with_DQ
           pipeline_task:
-            pipeline_id: b93e3328-48d1-4525-b61d-783a560fb165
+            pipeline_id: ${resources.pipelines.Wiki_Events_GLD.id}
+
       job_clusters:
         - job_cluster_key: Wiki_cluster
           new_cluster:
-            cluster_name: ""
             spark_version: 17.3.x-scala2.13
             azure_attributes:
               availability: SPOT_WITH_FALLBACK_AZURE
             node_type_id: Standard_D2ads_v6
             data_security_mode: DATA_SECURITY_MODE_AUTO
             runtime_engine: PHOTON
-            kind: CLASSIC_PREVIEW
-            is_single_node: false
             autoscale:
               min_workers: 2
               max_workers: 8
